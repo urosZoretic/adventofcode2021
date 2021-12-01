@@ -1,5 +1,5 @@
 inputFile = "day1/day1_1_input.txt"
-
+# https://adventofcode.com/2021/day/1
 if __name__ == '__main__':
     print("SONAR SWEEP")
     nbIncreased = 0
