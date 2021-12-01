@@ -1,6 +1,7 @@
 inputFile = "day1/day1_1_input.txt"
 
 if __name__ == '__main__':
+    print("SONAR SWEEP")
     nbIncreased = 0
     with open(inputFile, "r") as f:
         prevValue = 0
