@@ -1,5 +1,5 @@
 inputFile = "./day2/day2_1_input.txt"
-# https://adventofcode.com/2021/day/1
+# https://adventofcode.com/2021/day/2
 if __name__ == '__main__':
     print("DIVE: how to pilot")
 
