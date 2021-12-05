@@ -6,4 +6,4 @@ these project requires at least python version 3.10 because we are using new fea
 * match statement
 ---
 
-* project try to use pure python without any external libs
+* project try to use pure python without any external libs or python libs... pure code
