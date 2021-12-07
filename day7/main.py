@@ -21,6 +21,7 @@ if __name__ == '__main__':
     minFuel = sys.maxsize ## only one sys lib to get max number of int
     minFuelPart2 = sys.maxsize
 
+
     for n in range(min(crabPosition), max(crabPosition)):  # possible min positions
         tmpFuel = 0
         tmpFuelPar2 = 0
