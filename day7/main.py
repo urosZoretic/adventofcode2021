@@ -13,6 +13,7 @@ def returnMin(currentMin, tmpNum):
 
 
 if __name__ == '__main__':
+    ## NOTE... binary search implementation should be faster... but ok.. "brute force" solution works
     print("The Treachery of Whales")
 
     with open(inputFile, "r") as f:
