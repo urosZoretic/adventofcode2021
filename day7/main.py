@@ -13,15 +13,14 @@ def returnMin(currentMin, tmpNum):
 
 
 if __name__ == '__main__':
-    ## NOTE... binary search implementation should be faster... but ok.. "brute force" solution works
+    # NOTE... binary search implementation should be faster... but ok.. "brute force" solution works
     print("The Treachery of Whales")
 
     with open(inputFile, "r") as f:
         crabPosition = [int(num) for num in f.read().strip().split(",")]
 
-    minFuel = sys.maxsize ## only one sys lib to get max number of int
+    minFuel = sys.maxsize  # only one sys lib to get max number of int
     minFuelPart2 = sys.maxsize
-
 
     for n in range(min(crabPosition), max(crabPosition)):  # possible min positions
         tmpFuel = 0
