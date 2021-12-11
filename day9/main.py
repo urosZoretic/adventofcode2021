@@ -1,5 +1,3 @@
-import sys
-
 inputFile = "day9/day9_1_input.txt"
 
 # https://adventofcode.com/2021/day/9
