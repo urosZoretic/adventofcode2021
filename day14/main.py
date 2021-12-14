@@ -6,13 +6,10 @@ inputFile = "day14/day14_1_input.txt"
 
 # https://adventofcode.com/2021/day/14
 
-def defValue():
-    return 0
-
 
 def calculate(polymer, rules, numSteps):
     # print(rules)
-    pairCount = defaultdict(defValue)
+    pairCount = defaultdict(int)
 
     for i in range(len(polymer) - 1):
         currentPair = polymer[i:i + 2]
@@ -23,7 +20,7 @@ def calculate(polymer, rules, numSteps):
     # last letter never changes
     last = polymer[-1]
     for i in range(numSteps):
-        newPairCount = defaultdict(defValue)
+        newPairCount = defaultdict(int)
         """
         Now loop through the keys in the pairCount dictionary
         For each key, see if it exists in the reaction dictionary
@@ -43,7 +40,7 @@ def calculate(polymer, rules, numSteps):
         pairCount = newPairCount
 
     # print("Pair count: ",  pairCount)
-    charCount = defaultdict(defValue)
+    charCount = defaultdict(int)
     for pair in pairCount:
         charCount[pair[0]] += pairCount[pair]
 
