@@ -17,26 +17,26 @@ class Pt:
     graph: dict
 
     total = sys.maxsize
-    prev = None
+    # prev = None
 
     def __lt__(self, other):
         return self.total < other.total
 
-    def __eq__(self, other):
-        return self.total == other.total
+    """def __eq__(self, other):
+        return self.total == other.total"""
 
-    def __repr__(self):
+    """def __repr__(self):
         return 'Pt(x=%s, y=%s, weight=%s, total=%s, prev=%s)' % (
-        self.x, self.y, self.weight, self.total, self.prevcoord)
+        self.x, self.y, self.weight, self.total, self.prevcoord)"""
 
     @property
     def coord(self):
         return (self.x, self.y)
 
-    @property
+    """@property
     def prevcoord(self):
         if self.prev is not None:
-            return self.prev.coord
+            return self.prev.coord"""
 
     @property
     def neighbors(self):
@@ -67,7 +67,7 @@ def dijkstra(start):
         for node in current.neighbors:
             # print(node)
             if current.total + node.weight < node.total:
-                node.prev = current
+                # node.prev = current
                 node.total = node.weight + current.total
             if node.coord not in visited:
                 heappush(q, node)
@@ -81,10 +81,12 @@ g = load_data(data)
 # print(min(g))
 # print(g[min(g)])
 
+# printData(g)
 
 dijkstra(g[min(g)])
 
 print('part_1 =', g[max(g)].total)
+# printData(g)
 
 
 # Part 2
