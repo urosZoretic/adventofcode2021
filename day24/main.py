@@ -1,40 +1,26 @@
-def run():
-    data = [line.split() for line in open("day24/day24_1_input.txt")]
-    params = []
-    for i in range(0, 18 * 14, 18):
-        p1 = int(data[i + 4][-1])
-        p2 = int(data[i + 5][-1])
-        p3 = int(data[i + 15][-1])
-        params.append((p1, p2, p3))
+def solve(inp, puzzle_input):
+    cmds = [line.split() for line in puzzle_input.splitlines()]
 
-    # After analysing the code, this is the function performed on each input
-    def f(params, z, w):
-        if (z % 26 + params[1]) != w:
-            z = z // params[0] * 26 + w + params[2]
-        else:
-            z = z // params[0]
-        return z
+    stack = []
+    for i in range(14):
+        div, chk, add = map(int, [cmds[i * 18 + x][-1] for x in [4, 5, 15]])
+        if div == 1:
+            stack.append((i, add))
+        elif div == 26:
+            j, add = stack.pop()
+            inp[i] = inp[j] + add + chk
+            if inp[i] > 9:
+                inp[j] -= inp[i] - 9
+                inp[i] = 9
+            if inp[i] < 1:
+                inp[j] += 1 - inp[i]
+                inp[i] = 1
 
-    print("params: ", params)
+    return "".join(map(str, inp))
 
-    zs = {0: [0, 0]}
-    for i, p in enumerate(params):
-        new_zs = {}
-        for z, inp in zs.items():
-            for w in range(1, 10):
-                new_z = f(p, z, w)
 
-                # don't bother recording if it's a 'contraction' and we don't contract!
-                if p[0] == 1 or (p[0] == 26 and new_z < z):
-                    if new_z not in new_zs:
-                        new_zs[new_z] = [inp[0] * 10 + w, inp[1] * 10 + w]
-                    else:
-                        new_zs[new_z][0] = min(new_zs[new_z][0], inp[0] * 10 + w)
-                        new_zs[new_z][1] = max(new_zs[new_z][1], inp[1] * 10 + w)
-
-        print("Digit:", i + 1, "Tracked values of z:", len(new_zs))
-        zs = new_zs
-
-    print("Best valid values:", zs[0])
-
-run()
+if __name__ == "__main__":
+    with open("day24/day24_1_input.txt") as fh:
+        data = fh.read()
+    print("Part1:", solve([9] * 14, data))
+    print("Part2:", solve([1] * 14, data))
